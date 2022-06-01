@@ -2,11 +2,15 @@ package com.qa.AvengersInitiativeProject.repo;
 
 import org.springframework.stereotype.Repository;
 import com.qa.AvengersInitiativeProject.Domain.Avenger;
+
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 @Repository
-public class AvengerRepo extends JpaRepository<Avenger, Long> {
+public interface AvengerRepo extends JpaRepository<Avenger, Long> {
 	
 //	Derived Query
 	List<Avenger> findByFirstName(String firstName);

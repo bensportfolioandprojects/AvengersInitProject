@@ -1,11 +1,13 @@
 package com.qa.AvengersInitiativeProject.Domain;
 
 import javax.persistence.Entity;
+
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class Avenger {
@@ -74,7 +76,23 @@ public class Avenger {
 	public void setPower(String power) {
 		this.power = power;
 	}
-	
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(firstName, id, lastName, power);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Avenger other = (Avenger) obj;
+		return Objects.equals(firstName, other.firstName) && id == other.id && Objects.equals(lastName, other.lastName)
+				&& Objects.equals(power, other.power);
+	}
 
 }

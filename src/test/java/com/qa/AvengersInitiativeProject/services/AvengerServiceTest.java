@@ -1,6 +1,11 @@
 package com.qa.AvengersInitiativeProject.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -78,11 +83,9 @@ public class AvengerServiceTest {
 			// Mocking the dependency (repo)
 			Mockito.when(repo.findByFirstName(Steve)).thenReturn(output);
 			// Asserting the actual test method's output
-			assertEquals(output, service.getbyFirstName());
+			assertEquals(output, service.getByFirstName());
 			// Verifying the number of times a mock method ran - Not Required
 			Mockito.verify(repo, Mockito.times(1)).findByFirstName();
-		}
-
 		}
 
 	// Update Test
@@ -115,12 +118,10 @@ public class AvengerServiceTest {
 		// Mocking the dependency (repo)
 		Mockito.when(repo.deleteById()).thenReturn(true);
 		// Asserting the actual test method's output
-		assertEquals(true, service.deleteById(Id));
+		assertEquals(true, service.delete(Id));
 		// Verifying the number of times a mock method ran - Not Required
 //		Mockito.verify(repo, Mockito.times(1)).findAll();
 
 }
 
 	}
-
-}

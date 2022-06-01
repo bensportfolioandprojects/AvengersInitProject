@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS "avenger" CASCADE;
+
+CREATE TABLE "avenger" (
+	"id" INT AUTO_INCREMENT,
+	"firstname" VARCHAR(255) NOT NULL,
+	"last_name" VARCHAR(255) NOT NULL,
+	"power" VARCHAR(255) NOT NULL,
+	PRIMARY KEY("id")
+);

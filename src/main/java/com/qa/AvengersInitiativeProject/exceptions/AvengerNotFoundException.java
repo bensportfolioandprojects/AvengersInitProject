@@ -7,4 +7,9 @@ import org.springframework.http.HttpStatus;
 @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Avenger does not exist with that ID")
 public class AvengerNotFoundException extends NoSuchElementException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7871720392280993870L;
+
 }

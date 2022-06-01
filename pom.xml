@@ -14,7 +14,7 @@
 	<name>AvengersInitiativeProject</name>
 	<description>2nd Project for QA</description>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>16</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

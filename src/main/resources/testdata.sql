@@ -1,0 +1,1 @@
+INSERT INTO "avenger" ("firstname", "last_name", "power") VALUES ('Steve', 'Rodgers', 'super human strength and speed');

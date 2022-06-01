@@ -1,11 +1,13 @@
 package com.qa.AvengersInitiativeProject.services;
 
-import org.hibernate.mapping.List;
-
 import com.qa.AvengersInitiativeProject.Domain.Avenger;
 import com.qa.AvengersInitiativeProject.repo.AvengerRepo;
+
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+@Service
 public class AvengerService {
 	
 	private AvengerRepo repo;
