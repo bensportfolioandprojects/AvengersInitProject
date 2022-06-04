@@ -1,0 +1,19 @@
+body {
+    background-color:lightseagreen;
+}
+
+title {
+    font-family: Georgia, Serif;
+}
+
+.row gy-2 gx-3 align-items-center col-auto1 {
+    flex-direction: column;
+}
+
+.row gy-2 gx-3 align-items-center col-auto2 {
+    flex-direction: column;
+}
+
+.row gy-2 gx-3 align-items-center col-auto3 {
+    flex-direction: column;
+}
