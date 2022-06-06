@@ -1,19 +1,19 @@
 body {
-    background-color:lightseagreen;
+    /* background-color:lightseagreen; */
+    background-image: url(http://localhost:8080/imgs/Infinitylogo.jpg );
 }
 
-title {
-    font-family: Georgia, Serif;
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color: orangered;
 }
 
-.row gy-2 gx-3 align-items-center col-auto1 {
-    flex-direction: column;
-}
-
-.row gy-2 gx-3 align-items-center col-auto2 {
-    flex-direction: column;
-}
-
-.row gy-2 gx-3 align-items-center col-auto3 {
-    flex-direction: column;
+.entryDiv {
+    margin-top:5 px;
+    border: 2 px solid;
+    border-radius: 5px;
+    border-color:black;
+    background-color: lightgray;
+    max-width: 50vw;
 }

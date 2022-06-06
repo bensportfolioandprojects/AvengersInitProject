@@ -116,7 +116,7 @@ public class AvengerServiceTest {
 		// Creating any expected output and inputs if necessary
 		final long Id = 1L;
 		// Mocking the dependency (repo)
-		Mockito.when(repo.deleteById()).thenReturn(true);
+		Mockito.when(repo.deleteById(Id)).thenReturn(true);
 		// Asserting the actual test method's output
 		assertEquals(true, service.delete(Id));
 		// Verifying the number of times a mock method ran - Not Required

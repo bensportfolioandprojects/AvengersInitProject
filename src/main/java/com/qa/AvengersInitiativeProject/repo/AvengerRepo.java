@@ -17,8 +17,10 @@ public interface AvengerRepo extends JpaRepository<Avenger, Long> {
 	List<Avenger> findByLastName(String lastName);
 	List<Avenger> findByFirstNameStartingWith(String name);
 	
+	
 //	Manual SQL Query
 	@Query(value = "SELECT * FROM avenger WHERE power = ?1", nativeQuery=true)
 	Optional<Avenger> findByPower(String power);
+
 
 }
