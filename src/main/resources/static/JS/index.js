@@ -7,11 +7,19 @@
 // const FORM_DIV = document.querySelector("#form-div")
 
 // Selectors
-let resultsDiv = document.querySelector("#results");
+let resultsDiv = document.querySelector("#results_div");
+// let = document.querySelector("viewbody");
 let inputFN = document.querySelector("#inputFN");
 let inputLN = document.querySelector("#inputLN");
 let inputP = document.querySelector("#inputP");
 let inputID = document.querySelector("#inputID");
+
+let getBtn = document.querySelector("#getAll");
+let postBtn = document.querySelector("#post");
+let delBtn = document.querySelector("#delete");
+let updBtn = document.querySelector("#put");
+let viewBtn = document.querySelector("#view");
+let editSaveBtn = document.querySelector("#editsave")
 
 // // Setup
 // const setup = () => {
@@ -23,24 +31,31 @@ const FIRSTNAME = document.querySelector(".firstname-input");
 const LASTNAME = document.querySelector(".lastname-input");
 const POWER = document.querySelector(".power-input");
 
-// Buttons
-let getBtn = document.querySelector("#get");
-let postBtn = document.querySelector("#post");
-let delBtn = document.querySelector("#delete");
-let updBtn = document.querySelector("#put");
-let viewBtn = document.querySelector("#view");
+// Functionality
 
+let displayResult = (data) => {
+    resultsDiv.innerHTML="";
+    for (let entry of data) {
+        const entryDiv = document.createElement("div");
+        entryDiv.setAttribute("class", "entryDiv");
+        entryDiv.innerHTML=`Avenger ID: ${entry.id}<br/> First Name: ${entry.firstName}<br/> Last Name: ${entry.lastName}<br/> Power: ${entry.power}<br/>`;
+        entryDiv.classList.add("bordered");
+        resultsDiv.appendChild(entryDiv);
+    }
+}
+
+// API
 // GET - READ
 let getRequest = () => {
-    // results.innerHTML ="";
     axios.get("http://localhost:8080/avenger/getAll")
         .then((response) => {
+            displayResult(response.data);
             // resultsDiv.innerHTML = "";
             console.log(response.data);
-            displayResult(response.data);
+            
         })
-        .catch((err) => {
-            console.error(err);
+        .catch((error) => {
+            console.error(error);
         });
 }
 
@@ -50,12 +65,12 @@ let getByIdRequest = () => {
     let obj = {
         "id":inputID.value
     }
-    axios.get("http://localhost:8080/avenger/getById/", obj)
+    axios.get(`http://localhost:8080/avenger/getById/`, obj)
         .then((response) => {
             resultsDiv.innerHTML = "";
             console.log(response);
             
-            const text = document.createTextNode(`ID : ${response.data.entryId}`); 
+            const text = document.createTextNode(`ID : ${response.data.Id}`); 
             const text2 = document.createTextNode(`Name : ${response.data.name} : ${response.data.entry}`);
             const text3 = document.createTextNode(`Power :  ${response.data.power}`);
             resultsDiv.appendChild(Div);
@@ -63,18 +78,8 @@ let getByIdRequest = () => {
         .catch((err) => {
             console.error(err);
         });
-// const getAll = () => {
-//     axios.get(`${ADDR}:${location.port}/api/getAll/${id}`)
-//     .then((resp) => {
-//         RESULTS_DIV.innerHTML = "";
-//         const RESULTS = resp.data;
-//         for (let result of RESULTS) {
-//             printResults(result);
-//         }
-//     }).catch((err) => console.error(err))
-// }
 
-
+    }
 // POST - CREATE
 let postRequest = () => {
 
@@ -99,16 +104,16 @@ let postRequest = () => {
 // PUT/PATCH - UPDATE
 
 let putRequest = () => {
+    displayResult;
 
     let obj = {
         "Id":inputID.value,
-        "firstName":inputFN.value,
-        "lastName":inputLN.value,
-        "power":inputP.value
-
+        "firstName":editInputFN.value,
+        "lastName":editInputLN.value,
+        "power":editInputP.value
     }
     
-    axios.get("http://localhost:8080/avenger/getAll")
+    axios.put(`http://localhost:8080/avenger/update/${inputID.value}`, obj)
         .then((response) => {
             resultsDiv.innerHTML = "";
             console.log(response.data);
@@ -127,7 +132,7 @@ let deleteRequest = () => {
         "Id":inputID.value,
     }
     
-    axios.delete("http://localhost:8080/avenger/delete/", obj)
+    axios.delete(`http://localhost:8080/avenger/delete/${inputID.value}`, obj)
         .then((response) => {
             resultsDiv.innerHTML = "";
             console.log(response.data);
@@ -138,42 +143,9 @@ let deleteRequest = () => {
         });
 }
 
-// Display Result
-
-let displayResult = (data) => {
-    for (let entry of data) {
-        const entryDiv = document.createElement("div");
-        entryDiv.setAttribute("class", "entryDiv");
-        const text = document.createTextNode(`ID: ${entry.id} | First Name: ${entry.first_name} | Last Name: ${entry.lastName} | Power: ${entry.power}`);
-
-        // const img = document.createElement("img");
-        // img.setAttribute("src", entry.avatar);
-        // img.setAttribute("class", "avatars");
-
-        entryDiv.appendChild(text);
-        resultsDiv.appendChild(entryDiv);
-        // resultsDiv.appendChild(img);
-    }
-}
-
-// const del = (id) => {
-//     axios.delete(`${ADDR}:${location.port}/api/remove/${id}`)
-//     .then((resp) => {
-//         getAll();
-//     }).catch((err) => {
-//         alert(err);
-//     })
-// }
-
-// let mainDiv = document.querySelector("#addToMe");
-// let newDiv = document.createElement("div");
-// let newText = document.createTextNode(`${entry.id}, ${entry.firstName}, ${entry.lastName}, ${entry.power}`);
-
 // Event Listeners
 getBtn.addEventListener("click", getRequest);
-getBtn.addEventListener("click", displayResult);
 postBtn.addEventListener("click", postRequest);
 delBtn.addEventListener("click", deleteRequest);
-updBtn.addEventListener("click", postRequest);
+editSaveBtn.addEventListener("click", postRequest);
 viewBtn.addEventListener("click", getByIdRequest);
-}

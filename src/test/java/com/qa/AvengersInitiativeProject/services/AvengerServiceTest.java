@@ -79,13 +79,12 @@ public class AvengerServiceTest {
 		public void getByFirstNameTest() {
 			// Creating any expected output and inputs if necessary
 			Avenger output = new Avenger(1L, "Steve", "Rodgers", "super human strength and speed");
-			output.add(new Avenger(1L, "Steve", "Rodgers", "super human strength and speed"));
 			// Mocking the dependency (repo)
-			Mockito.when(repo.findByFirstName(Steve)).thenReturn(output);
+			Mockito.when(repo.findByFirstName("Steve")).thenReturn(output);
 			// Asserting the actual test method's output
-			assertEquals(output, service.getByFirstName());
+			assertEquals(output, service.getByFirstName("Steve"));
 			// Verifying the number of times a mock method ran - Not Required
-			Mockito.verify(repo, Mockito.times(1)).findByFirstName();
+			Mockito.verify(repo, Mockito.times(1)).findByFirstName("Steve");
 		}
 
 	// Update Test
@@ -111,17 +110,24 @@ public class AvengerServiceTest {
 	
 	
 	// Delete Test
+//	@Test
+//	public void deleteTest() {
+//		// Creating any expected output and inputs if necessary
+//		final long Id = 1L;
+//		// Mocking the dependency (repo)
+//		Mockito.when(repo.deleteById(Id)).thenReturn(true);
+//		// Asserting the actual test method's output
+//		assertEquals(true, service.delete(Id));
+//		// Verifying the number of times a mock method ran - Not Required
+////		Mockito.verify(repo, Mockito.times(1)).findAll();
+//	}
 	@Test
 	public void deleteTest() {
-		// Creating any expected output and inputs if necessary
-		final long Id = 1L;
-		// Mocking the dependency (repo)
-		Mockito.when(repo.deleteById(Id)).thenReturn(true);
-		// Asserting the actual test method's output
-		assertEquals(true, service.delete(Id));
-		// Verifying the number of times a mock method ran - Not Required
-//		Mockito.verify(repo, Mockito.times(1)).findAll();
-
-}
+		Avenger input = new Avenger(1L, "Steve", "Rodgers", "super strength and speed");
+		Mockito.when(repo.existsById(1L)).thenReturn(false);
+		assertEquals(true, service.delete(1L));
+		Mockito.verify(repo, Mockito.times(1)).deleteById(1L);
+		Mockito.verify(repo, Mockito.times(1)).existsById(1L);
+	}
 
 	}
