@@ -16,7 +16,7 @@ Unit and Integration Tests
 All of the main files have been tested including the controller, domain, repos services classes and integration tests in the controllerTests class.
 
 Tools Used
-Jira - Kanban board and epic/stories visualisation
+Jira - Kanban board and epic/stories visualisation - Link - https://bphillips96.atlassian.net/jira/software/projects/AV/boards/1/backlog?sprintCompleted
 Maven - Dependency and Build Management
 Git - Gitbash functionality for command line interface
 Github - Repository management and integration with Jira for automatic Jira update
