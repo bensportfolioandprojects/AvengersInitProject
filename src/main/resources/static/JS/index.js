@@ -65,7 +65,7 @@ let getByIdRequest = () => {
     let obj = {
         "id":inputID.value
     }
-    axios.get(`http://localhost:8080/avenger/getById/`, obj)
+    axios.get(`http://localhost:8080/avenger/getById`, obj)
         .then((response) => {
             resultsDiv.innerHTML = "";
             console.log(response);
@@ -73,7 +73,7 @@ let getByIdRequest = () => {
             const text = document.createTextNode(`ID : ${response.data.Id}`); 
             const text2 = document.createTextNode(`Name : ${response.data.name} : ${response.data.entry}`);
             const text3 = document.createTextNode(`Power :  ${response.data.power}`);
-            resultsDiv.appendChild(Div);
+            resultsDiv.appendChild(viewbody);
         })
         .catch((err) => {
             console.error(err);
@@ -104,7 +104,6 @@ let postRequest = () => {
 // PUT/PATCH - UPDATE
 
 let putRequest = () => {
-    displayResult;
 
     let obj = {
         "Id":inputID.value,
@@ -117,7 +116,7 @@ let putRequest = () => {
         .then((response) => {
             resultsDiv.innerHTML = "";
             console.log(response.data);
-            displayResult(response.data.data);
+            displayResult(response.data);
         })
         .catch((err) => {
             console.error(err);
@@ -136,7 +135,7 @@ let deleteRequest = () => {
         .then((response) => {
             resultsDiv.innerHTML = "";
             console.log(response.data);
-            displayResult(response.data.data);
+            displayResult(response.data);
         })
         .catch((err) => {
             console.error(err);
@@ -147,5 +146,5 @@ let deleteRequest = () => {
 getBtn.addEventListener("click", getRequest);
 postBtn.addEventListener("click", postRequest);
 delBtn.addEventListener("click", deleteRequest);
-editSaveBtn.addEventListener("click", postRequest);
+editSaveBtn.addEventListener("click", putRequest);
 viewBtn.addEventListener("click", getByIdRequest);

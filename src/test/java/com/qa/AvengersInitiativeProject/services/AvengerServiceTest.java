@@ -123,7 +123,7 @@ public class AvengerServiceTest {
 //	}
 	@Test
 	public void deleteTest() {
-		Avenger input = new Avenger(1L, "Steve", "Rodgers", "super strength and speed");
+		Avenger output = new Avenger(1L, "Steve", "Rodgers", "super strength and speed");
 		Mockito.when(repo.existsById(1L)).thenReturn(false);
 		assertEquals(true, service.delete(1L));
 		Mockito.verify(repo, Mockito.times(1)).deleteById(1L);
