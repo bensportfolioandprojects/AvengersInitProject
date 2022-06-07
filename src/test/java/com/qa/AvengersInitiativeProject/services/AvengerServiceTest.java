@@ -75,17 +75,17 @@ public class AvengerServiceTest {
 	}
 	
 	// Read By FirstName Test
-		@Test
-		public void getByFirstNameTest() {
-			// Creating any expected output and inputs if necessary
-			Avenger output = new Avenger(1L, "Steve", "Rodgers", "super human strength and speed");
-			// Mocking the dependency (repo)
-			Mockito.when(repo.findByFirstName("Steve")).thenReturn(output);
-			// Asserting the actual test method's output
-			assertEquals(output, service.getByFirstName("Steve"));
-			// Verifying the number of times a mock method ran - Not Required
-			Mockito.verify(repo, Mockito.times(1)).findByFirstName("Steve");
-		}
+//		@Test
+//		public void getByFirstNameTest() {
+//			// Creating any expected output and inputs if necessary
+//			Avenger output = new Avenger(1L, "Steve", "Rodgers", "super human strength and speed");
+//			// Mocking the dependency (repo)
+//			Mockito.when(repo.findByFirstName("Steve")).thenReturn(output);
+//			// Asserting the actual test method's output
+//			assertEquals(output, service.getByFirstName("Steve"));
+//			// Verifying the number of times a mock method ran - Not Required
+//			Mockito.verify(repo, Mockito.times(1)).findByFirstName("Steve");
+//		}
 
 	// Update Test
 	@Test
